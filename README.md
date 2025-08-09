@@ -1,5 +1,4 @@
-# CST8918_FinalProject
-# CST8918 - DevOps: Infrastructure as Code  
+# CST8918 - DevOps_FinalProject: Infrastructure as Code  
 **Final Project: Terraform, Azure AKS, and GitHub Actions**  
 **Group Name:** Group 11  
 **Category:** FP  
