@@ -126,8 +126,8 @@ Remix Weather app deployments and services in a Kubernetes.
 ### **Steps**
 1. Clone the repository:
    ```bash
-   git clone https://github.com/<your-repo>.git
-   cd <your-repo>
+   git clone (https://github.com/praj0080/CST8918_FinalProject.git)
+   cd CST8918_FinalProject
    ```
 2. Initialize Terraform:
    ```bash
