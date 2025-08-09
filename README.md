@@ -8,9 +8,9 @@
 
 ## 📌 Overview
 
-This is a capstone project illustrating Infrastructure as Code (IaC) concepts acquired in the term. We worked on the **Remix Weather Application** that we completed in week 3 and we applied Terraform to manage Azure resources, to create Azure Kubernetes Service (AKS) clusters and a managed Redis DB. The Terraform workflows, application builds and deployments happen automatically using GitHub Actions.
+It is a culminating project that demonstrates some of the concepts learned on Infrastructure as Code (IaC) during the term. We developed the Remix Weather Application which we had already done in week 3 and we used Terraform to work with Azure resources to create an Azure Kubernetes Service (AKS) clusters and managed Redis DB. The Terraform runs, application builds and deployments are done automatically via GitHub Actions.
 
-Configuration is managed in **Azure Blob Storage backend** and broken up into **modules** for it to be maintainable. This emulates a real real-life situation with several team members and different environments (dev, test, prod).
+The configuration has been handled in **Azure Blob Storage backend** and is divided into **modules** so that it would be possible to maintain it. This is a simulation of a real life scenario in which multiple members would be on a team in various environments (dev, test, prod).
 
 ---
 
@@ -20,7 +20,7 @@ Configuration is managed in **Azure Blob Storage backend** and broken up into **
 |------|---------------|
 | Meet Prajapati | [praj0080](https://github.com/praj0080) |
 
-> **Note:** Add your professor (`rlmckenney`) and all team members as collaborators on the repository.
+
 
 ---
 
