@@ -53,3 +53,8 @@ logs/
 
 git add .gitignore
 git commit -m "Update .gitignore to exclude terraform providers, caches, and secrets" 2>$null
+
+**/*.tfvars
+**/secrets.*
+**/private.*
+
