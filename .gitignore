@@ -1,0 +1,68 @@
+# ---- Node.js / JavaScript ----
+node_modules/
+dist/
+build/
+.next/
+out/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ---- Python ----
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# ---- Terraform ----
+**/.terraform/
+**/.terraform.lock.hcl
+**/*.tfstate
+**/*.tfstate.*
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+# Explicitly ignore Terraform provider binaries
+**/terraform-provider-*.exe
+**/terraform-provider-*.zip
+
+# ---- Docker ----
+*.log
+docker-compose.override.yml
+
+# ---- Environment / Secrets ----
+*.env
+*.env.*
+!*.env.example
+azure-credentials.json
+
+# ---- OS files ----
+.DS_Store
+Thumbs.db
+
+# ---- IDE / Editor ----
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*.bak
+
+# ---- Coverage / Testing ----
+coverage/
+*.lcov
+
+# ---- Misc ----
+tmp/
+logs/
