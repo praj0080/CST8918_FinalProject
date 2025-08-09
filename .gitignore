@@ -1,27 +1,4 @@
-# ---- Node.js / JavaScript ----
-node_modules/
-dist/
-build/
-.next/
-out/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-# ---- Python ----
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# ---- Terraform ----
+@"
 **/.terraform/
 **/.terraform.lock.hcl
 **/*.tfstate
@@ -33,36 +10,46 @@ override.tf.json
 *_override.tf.json
 .terraformrc
 terraform.rc
-# Explicitly ignore Terraform provider binaries
 **/terraform-provider-*.exe
 **/terraform-provider-*.zip
-
-# ---- Docker ----
+node_modules/
+dist/
+build/
+.next/
+out/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
 *.log
 docker-compose.override.yml
-
-# ---- Environment / Secrets ----
 *.env
 *.env.*
 !*.env.example
 azure-credentials.json
-
-# ---- OS files ----
 .DS_Store
 Thumbs.db
-
-# ---- IDE / Editor ----
 .vscode/
 .idea/
 *.swp
 *.swo
 *.swn
 *.bak
-
-# ---- Coverage / Testing ----
 coverage/
 *.lcov
-
-# ---- Misc ----
 tmp/
 logs/
+"@ | Set-Content .gitignore -Encoding utf8
+
+git add .gitignore
+git commit -m "Update .gitignore to exclude terraform providers, caches, and secrets" 2>$null
