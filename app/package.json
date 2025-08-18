@@ -1,0 +1,13 @@
+
+{
+  "name": "cst8918-weather-app",
+  "private": true,
+  "description": "DevOps final project - weather backend + frontend with Redis",
+  "scripts": {
+    "compose:up": "docker compose up --build",
+    "compose:down": "docker compose down -v",
+    "compose:logs": "docker compose logs -f",
+    "compose:ps": "docker compose ps"
+  }
+}
+
