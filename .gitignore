@@ -58,3 +58,7 @@ git commit -m "Update .gitignore to exclude terraform providers, caches, and sec
 **/secrets.*
 **/private.*
 
+terraform.tfstate
+terraform.tfstate.backup
+.terraform/
+*.tfvars
