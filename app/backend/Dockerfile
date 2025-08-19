@@ -1,11 +1,23 @@
-FROM node:20-alpine
-WORKDIR /usr/src/app
+# Frontend Dockerfile - Simple and Working
+FROM node:18-alpine
 
+# Set working directory
+WORKDIR /app
+
+# Copy package files
 COPY package*.json ./
-RUN npm ci
 
+# Install dependencies with legacy peer deps
+RUN npm install --legacy-peer-deps
+
+# Copy source code
 COPY . .
-ENV NODE_ENV=production
+
+# Build the application
+RUN npm run build
+
+# Expose frontend port
 EXPOSE 3000
 
-CMD ["npm","start"]
+# Start the application
+CMD ["npm", "start"]
