@@ -1,23 +1,23 @@
-# --- build stage
-FROM node:20-alpine AS build
+# Frontend Dockerfile - Simple and Working
+FROM node:18-alpine
+
+# Set working directory
 WORKDIR /app
+
+# Copy package files
 COPY package*.json ./
-RUN npm ci
+
+# Install dependencies with legacy peer deps
+RUN npm install --legacy-peer-deps
+
+# Copy source code
 COPY . .
+
+# Build the application
 RUN npm run build
 
-# --- run stage
-FROM node:20-alpine
-ENV NODE_ENV=production
-WORKDIR /app
-
-COPY package*.json ./
-RUN npm ci --omit=dev
-
-COPY --from=build /app/build   ./build
-COPY --from=build /app/public  ./public
-COPY --from=build /app/app     ./app
-COPY --from=build /app/remix.config.js ./remix.config.js
-
+# Expose frontend port
 EXPOSE 3000
-CMD ["npm","start"]
+
+# Start the application
+CMD ["npm", "start"]

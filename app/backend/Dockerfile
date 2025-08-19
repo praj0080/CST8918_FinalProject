@@ -1,23 +1,30 @@
-# Frontend Dockerfile - Simple and Working
+# Backend Dockerfile
+
+# Use lightweight Node.js image
 FROM node:18-alpine
 
 # Set working directory
 WORKDIR /app
 
-# Copy package files
+# Copy dependency files first (better layer caching)
 COPY package*.json ./
 
-# Install dependencies with legacy peer deps
-RUN npm install --legacy-peer-deps
+# Install only production dependencies
+RUN npm install --production
 
-# Copy source code
+# Copy application source
 COPY . .
 
-# Build the application
-RUN npm run build
+# Create non-root user for security
+RUN addgroup -g 1001 -S nodejs \
+  && adduser -S express -u 1001 \
+  && chown -R express:nodejs /app
 
-# Expose frontend port
+# Switch to non-root user
+USER express
+
+# Expose application port
 EXPOSE 3000
 
-# Start the application
-CMD ["npm", "start"]
+# Start backend
+CMD ["node", "index.js"]
