@@ -1,0 +1,59 @@
+name: Terraform Static Analysis
+
+on:
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'terraform/**'
+      - '.github/workflows/terraform-static-analysis.yml'
+  push:
+    branches: [ '**' ]    # run on push to any branch
+    paths:
+      - 'terraform/**'
+      - '.github/workflows/terraform-static-analysis.yml'
+
+jobs:
+  static-analysis:
+    name: Terraform Fmt/Validate + tfsec
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.6.0
+
+      - name: Terraform Format Check
+        run: |
+          terraform fmt -check -recursive ./terraform
+
+      - name: Terraform Validate (no backend)
+        working-directory: terraform
+        run: |
+          terraform init -backend=false
+          terraform validate
+
+      # Optional: TFLint (static linting of Terraform code)
+      - name: Setup TFLint
+        uses: terraform-linters/setup-tflint@v4
+        with:
+          tflint_version: v0.53.0
+
+      - name: Run TFLint
+        working-directory: terraform
+        run: |
+          tflint --init
+          tflint --recursive
+
+      # Security scanning with tfsec
+      - name: tfsec (IaC security scan)
+        uses: aquasecurity/tfsec-action@v1.0.3
+        with:
+          working_directory: terraform
+          soft_fail: false
